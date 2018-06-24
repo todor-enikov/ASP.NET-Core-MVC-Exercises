@@ -1,0 +1,36 @@
+﻿@model CustomerByIdModel
+
+@{
+    ViewData["Title"] = $"Customer with Id - {Model.Id}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Bought cars count
+            </th>
+            <th>
+                Total price for all bought cars
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                @Model.BoughtCarsCount
+            </td>
+            <td>
+                @Model.TotalSpentMoney
+            </td>
+        </tr>
+    </tbody>
+</table>

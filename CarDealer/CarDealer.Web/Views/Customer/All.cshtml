@@ -1,0 +1,40 @@
+﻿@model AllCustomersViewModel    
+
+@{
+    ViewData["Title"] = "All customers";
+}
+
+<h2>All customers ordered in @Model.OrderType</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Birth date
+            </th>
+            <th>
+                Is young Driver
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>
+                    @customer.Name
+                </td>
+                <td>
+                    @customer.Birthday
+                </td>
+                <td>
+                    @(customer.IsYoungDriver == true ? "Yes" : "No")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

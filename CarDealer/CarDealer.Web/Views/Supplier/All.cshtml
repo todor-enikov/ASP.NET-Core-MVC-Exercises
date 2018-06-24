@@ -1,0 +1,33 @@
+﻿@model AllSuppliersViewModel
+
+@{
+    ViewData["Title"] = $"All {(Model.IsImporter == true ? "importer" : "local")} suppliers";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number of parts</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model.AllSuppliers)
+        {
+            <tr>
+                <td>
+                    @supplier.Id
+                </td>
+                <td>
+                    @supplier.Name
+                </td>
+                <td>
+                    @supplier.NumberOfParts
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

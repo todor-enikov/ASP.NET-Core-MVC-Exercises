@@ -1,0 +1,40 @@
+﻿@model AllCarsViewModel
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h2>All car by make - @Model.Make</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Travelled Distance
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in @Model.AllCars)
+        {
+            <tr>
+                <td>
+                    @car.Make
+                </td>
+                <td>
+                    @car.Model
+                </td>
+                <td>
+                    @(car.TravelledDistance / 1000)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

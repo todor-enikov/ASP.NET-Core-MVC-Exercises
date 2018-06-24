@@ -1,0 +1,52 @@
+﻿@model SaleWithCarAndCustomerModel
+
+@{
+    ViewData["Title"] = "Sale By Id information";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Price of sale
+            </th>
+            <th>
+                Discount
+            </th>
+            <th>
+                Car information
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.CustomerName
+            </td>
+            <td>
+                @Model.PriceOfSale
+            </td>
+            <td>
+                @Model.Discount
+            </td>
+            <td>
+                <ul>
+                    <li>
+                      Car make - @Model.Car.Make
+                    </li>
+                    <li>
+                      Car model - @Model.Car.Model
+                    </li>
+                    <li>
+                      Car traveled distance - @Model.Car.TravelledDistance
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

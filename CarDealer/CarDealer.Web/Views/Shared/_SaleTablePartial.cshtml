@@ -1,0 +1,43 @@
+﻿@model List<SaleModel>
+
+@{
+    ViewData["Title"] = "_SaleTablePartial";
+}
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Car Id
+            </th>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Discount
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@sale.Id.ToString(), "ById", "Sale", new { id = @sale.Id }, null)
+                </td>
+                <td>
+                    @sale.CarId
+                </td>
+                <td>
+                    @sale.CustomerId
+                </td>
+                <td>
+                    @sale.Discount
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
