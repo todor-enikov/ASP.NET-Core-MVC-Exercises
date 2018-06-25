@@ -31,17 +31,44 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a href="/customers/all/ascending">Ascending customers</a></li>
-                    <li><a href="/customers/all/descending">Descending customers</a></li>
-                    <li>
-                        <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Customers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
                             <li><a href="/customers/all/ascending">Ascending customers</a></li>
-                            <li>test 2</li>
-
+                            <li><a href="/customers/all/descending">Descending customers</a></li>
                         </ul>
                     </li>
-
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Sales
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/sales/all">All sales</a></li>
+                            <li><a href="/sales/discounted">Discounted sales</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Cars
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/cars/parts">All cars</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Parts
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @* add li items for parts *@
+                        </ul>
+                    </li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
