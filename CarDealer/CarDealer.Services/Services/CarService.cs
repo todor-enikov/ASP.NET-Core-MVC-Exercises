@@ -1,4 +1,5 @@
 ﻿using CarDealer.Data;
+using CarDealer.Data.Models;
 using CarDealer.Services.Contracts;
 using CarDealer.Services.Models;
 using System.Collections.Generic;
@@ -13,6 +14,12 @@ namespace CarDealer.Services.Services
         public CarService(CarDealerSystemDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public void Add(Car car)
+        {
+            this.dbContext.Add(car);
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<CarModel> AllCars(string make)

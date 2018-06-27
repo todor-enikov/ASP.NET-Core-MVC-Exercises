@@ -24,7 +24,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("add")]
         [HttpPost]
-        public IActionResult Add(AddCustomerModel model)
+        public IActionResult Add(AddCustomerViewModel model)
         {
 
             if (!ModelState.IsValid)
