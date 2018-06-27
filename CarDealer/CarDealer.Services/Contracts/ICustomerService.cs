@@ -1,4 +1,5 @@
-﻿using CarDealer.Services.Models;
+﻿using CarDealer.Data.Models;
+using CarDealer.Services.Models;
 using System.Collections.Generic;
 
 namespace CarDealer.Services.Contracts
@@ -8,5 +9,7 @@ namespace CarDealer.Services.Contracts
         IEnumerable<CustomerModel> AllCustomers(OrderType order);
 
         CustomerByIdModel CustomerById(int id);
+
+        void Add(Customer model);
     }
 }

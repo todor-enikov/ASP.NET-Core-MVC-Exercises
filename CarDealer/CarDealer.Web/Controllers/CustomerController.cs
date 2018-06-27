@@ -1,10 +1,12 @@
-﻿using CarDealer.Services.Contracts;
+﻿using CarDealer.Data.Models;
+using CarDealer.Services.Contracts;
 using CarDealer.Services.Models;
 using CarDealer.Web.Models.Customer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
 {
+    [Route("customers")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
@@ -14,7 +16,35 @@ namespace CarDealer.Web.Controllers
             this.customerService = customerService;
         }
 
-        [Route("customers/all/{order}")]
+        [Route("add")]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [Route("add")]
+        [HttpPost]
+        public IActionResult Add(AddCustomerModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var customerToAdd = new Customer()
+            {
+                Name = model.Name,
+                BirthDate = model.Birthday,
+                IsYoungDriver = model.IsYoungDriver
+            };
+
+            this.customerService.Add(customerToAdd);
+
+            return RedirectToAction(nameof(All), new { order = OrderType.Ascending });
+        }
+
+        [Route("all/{order}")]
         public IActionResult All(string order)
         {
             OrderType orderType = order.ToLower() == "ascending"
@@ -25,7 +55,7 @@ namespace CarDealer.Web.Controllers
             return View(new AllCustomersViewModel { Customers = allCustomers, OrderType = orderType });
         }
 
-        [Route("customers/{id}")]
+        [Route("{id}")]
         public IActionResult ById(string id)
         {
             var customerById = this.customerService.CustomerById(int.Parse(id));

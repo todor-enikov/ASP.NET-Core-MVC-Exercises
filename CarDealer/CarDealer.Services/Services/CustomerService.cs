@@ -17,6 +17,12 @@ namespace CarDealer.Services.Services
             this.dbContext = dbContext;
         }
 
+        public void Add(Customer model)
+        {
+            this.dbContext.Add(model);
+            this.dbContext.SaveChanges();
+        }
+
         public IEnumerable<CustomerModel> AllCustomers(OrderType order)
         {
             var customersQuery = this.dbContext.Customers.AsQueryable();

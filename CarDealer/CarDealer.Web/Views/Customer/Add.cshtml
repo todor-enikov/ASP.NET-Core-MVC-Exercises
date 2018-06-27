@@ -1,0 +1,51 @@
+﻿@model AddCustomerModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Add customer</h2>
+
+<form method="post">
+    <div class="form-group row">
+        <div class="col-md-2">
+            <label asp-for="Name" class="form-control"></label>
+        </div>
+        <div class="col-md-2">
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <span asp-validation-for="Name" class="text-capitalize"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2">
+            <label asp-for="Birthday" class="form-control"></label>
+        </div>
+        <div class="col-md-2">
+            <input asp-for="Birthday" class="form-control" type="date"/>
+        </div>
+        <div class="col-md-2">
+            <span asp-validation-for="Birthday" class="text-capitalize"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2">
+            <label asp-for="IsYoungDriver" class="form-control"></label>
+        </div>
+        <div class="col-md-2">
+            <input asp-for="IsYoungDriver" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <span asp-validation-for="IsYoungDriver" class="text-capitalize"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Add customer" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
