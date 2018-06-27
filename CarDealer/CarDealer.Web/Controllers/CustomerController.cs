@@ -24,7 +24,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("add")]
         [HttpPost]
-        public IActionResult Add(AddCustomerViewModel model)
+        public IActionResult Add(CustomerViewModel model)
         {
 
             if (!ModelState.IsValid)
@@ -44,6 +44,43 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All), new { order = OrderType.Ascending });
         }
 
+        [Route("edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var customerById = this.customerService.EditCustomerById(id);
+
+            CustomerViewModel customerViewModel = new CustomerViewModel()
+            {
+                Name = customerById.Name,
+                Birthday = customerById.Birthday,
+                IsYoungDriver = customerById.IsYoungDriver
+            };
+
+            return View(customerViewModel);
+        }
+
+        [Route("edit/{id}")]
+        [HttpPost]
+        public IActionResult Edit(CustomerViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            Customer updateCustomer = new Customer()
+            {
+                Id=viewModel.Id,
+                Name = viewModel.Name,
+                BirthDate = viewModel.Birthday,
+                IsYoungDriver = viewModel.IsYoungDriver
+            };
+
+            this.customerService.Edit(updateCustomer);
+
+            return View(nameof(ById), new { id = viewModel.Id });
+        }
+
         [Route("all/{order}")]
         public IActionResult All(string order)
         {
@@ -56,9 +93,9 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("{id}")]
-        public IActionResult ById(string id)
+        public IActionResult ById(int id)
         {
-            var customerById = this.customerService.CustomerById(int.Parse(id));
+            var customerById = this.customerService.CustomerById(id);
 
             return View(customerById);
         }

@@ -18,22 +18,28 @@
             <th>
                 Is young Driver
             </th>
+            <th>
+                Edit customer
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var customer in Model.Customers)
         {
-            <tr>
-                <td>
-                    @customer.Name
-                </td>
-                <td>
-                    @customer.Birthday
-                </td>
-                <td>
-                    @(customer.IsYoungDriver == true ? "Yes" : "No")
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @customer.Name
+            </td>
+            <td>
+                @customer.Birthday
+            </td>
+            <td>
+                @(customer.IsYoungDriver == true ? "Yes" : "No")
+            </td>
+            <td>
+                <a href="/customers/edit/@(customer.Id)" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -23,6 +23,19 @@ namespace CarDealer.Services.Services
             this.dbContext.SaveChanges();
         }
 
+        public void Edit(Customer model)
+        {
+            Customer entityToUpdate = this.dbContext.Customers
+                                               .Where(c => c.Id == model.Id)
+                                               .FirstOrDefault();
+
+            entityToUpdate.Name = model.Name;
+            entityToUpdate.BirthDate = model.BirthDate;
+            entityToUpdate.IsYoungDriver = model.IsYoungDriver;
+            this.dbContext.Update(entityToUpdate);
+            this.dbContext.SaveChanges();
+        }
+
         public IEnumerable<CustomerModel> AllCustomers(OrderType order)
         {
             var customersQuery = this.dbContext.Customers.AsQueryable();
@@ -45,6 +58,7 @@ namespace CarDealer.Services.Services
 
             return customersQuery.Select(c => new CustomerModel
             {
+                Id = c.Id,
                 Name = c.Name,
                 Birthday = c.BirthDate,
                 IsYoungDriver = c.IsYoungDriver
@@ -62,6 +76,15 @@ namespace CarDealer.Services.Services
                                        })
                                        .FirstOrDefault();
 
-
+        public EditCustomerByIdModel EditCustomerById(int id)
+            => this.dbContext.Customers.Where(c => c.Id == id)
+                                       .Select(c => new EditCustomerByIdModel
+                                       {
+                                           Id = c.Id,
+                                           Name = c.Name,
+                                           Birthday = c.BirthDate,
+                                           IsYoungDriver = c.IsYoungDriver
+                                       })
+                                       .FirstOrDefault();
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CarDealer.Web.Models.Customer
 {
-    public class AddCustomerViewModel
+    public class CustomerViewModel
     {
+        public int Id { get; set; }
+
         [MaxLength(100, ErrorMessage = "The name should be less than 100 symbols!")]
         [MinLength(5, ErrorMessage = "The name should be more than 5 symbols!")]
         [Required(ErrorMessage = "The name is required!")]

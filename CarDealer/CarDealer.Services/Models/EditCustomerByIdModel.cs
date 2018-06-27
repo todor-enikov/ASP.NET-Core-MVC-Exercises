@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CarDealer.Services.Models
 {
-    public class CustomerModel
+    public class EditCustomerByIdModel
     {
         public int Id { get; set; }
 

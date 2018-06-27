@@ -10,6 +10,10 @@ namespace CarDealer.Services.Contracts
 
         CustomerByIdModel CustomerById(int id);
 
+        EditCustomerByIdModel EditCustomerById(int id);
+
         void Add(Customer model);
+
+        void Edit(Customer model);
     }
 }
