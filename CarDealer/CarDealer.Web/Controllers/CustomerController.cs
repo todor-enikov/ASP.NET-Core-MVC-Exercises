@@ -70,7 +70,7 @@ namespace CarDealer.Web.Controllers
 
             Customer updateCustomer = new Customer()
             {
-                Id=viewModel.Id,
+                Id = viewModel.Id,
                 Name = viewModel.Name,
                 BirthDate = viewModel.Birthday,
                 IsYoungDriver = viewModel.IsYoungDriver
@@ -78,7 +78,7 @@ namespace CarDealer.Web.Controllers
 
             this.customerService.Edit(updateCustomer);
 
-            return View(nameof(ById), new { id = viewModel.Id });
+            return RedirectToAction(nameof(ById), new { id = viewModel.Id });
         }
 
         [Route("all/{order}")]
