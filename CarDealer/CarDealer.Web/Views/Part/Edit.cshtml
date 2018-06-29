@@ -1,4 +1,10 @@
-﻿@model PartViewModel
+﻿@model EditPartViewModel
+
+@{
+    ViewData["Title"] = "Edit part";
+}
+
+<h2>@ViewData["Title"]</h2>
 
 <form method="post">
     <div class="form-group row">
@@ -6,7 +12,7 @@
             <label asp-for="Name" class="form-control"></label>
         </div>
         <div class="col-md-2">
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form-control" readonly/>
         </div>
         <div class="col-md-2">
             <span asp-validation-for="Name" class="text-capitalize"></span>
@@ -35,28 +41,6 @@
         </div>
     </div>
     <div class="form-group row">
-        <div class="col-md-2">
-            <label asp-for="Supplier.Name" class="form-control"></label>
-        </div>
-        <div class="col-md-2">
-            <input asp-for="Supplier.Name" class="form-control" />
-        </div>
-        <div class="col-md-2">
-            <span asp-validation-for="Supplier.Name" class="text-capitalize"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-md-2">
-            <label asp-for="Supplier.IsImporter" class="form-control"></label>
-        </div>
-        <div class="col-md-2">
-            <input asp-for="Supplier.IsImporter" class="form-control" />
-        </div>
-        <div class="col-md-2">
-            <span asp-validation-for="Supplier.IsImporter" class="text-capitalize"></span>
-        </div>
-    </div>
-    <div class="form-group row">
         <div class="col-md-1">
         </div>
         <div class="col-md-2">
@@ -64,4 +48,3 @@
         </div>
     </div>
 </form>
-

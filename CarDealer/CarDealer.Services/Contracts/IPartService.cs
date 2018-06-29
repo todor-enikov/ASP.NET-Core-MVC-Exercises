@@ -11,5 +11,9 @@ namespace CarDealer.Services.Contracts
         IEnumerable<PartModel> All();
 
         void Add(Part part);
+
+        void Edit(Part part);
+
+        PartModel ById(int id);
     }
 }

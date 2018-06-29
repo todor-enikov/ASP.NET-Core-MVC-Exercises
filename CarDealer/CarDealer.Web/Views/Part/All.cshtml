@@ -18,6 +18,9 @@
             <td>
                 Quantity
             </td>
+            <td>
+                CRUD
+            </td>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +35,9 @@
                 </td>
                 <td>
                     @item.Quantity
+                </td>
+                <td>
+                    <a href="/parts/edit/@(item.Id)" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         }

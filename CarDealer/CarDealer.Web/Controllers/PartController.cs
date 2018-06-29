@@ -59,6 +59,42 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All));
         }
 
+        [Route("edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var partById = this.partService.ById(id);
+
+            EditPartViewModel partViewModel = new EditPartViewModel()
+            {
+                Name = partById.Name,
+                Price = partById.Price,
+                Quantity = partById.Quantity
+            };
+
+            return View(partViewModel);
+        }
+
+        [Route("edit/{id}")]
+        [HttpPost]
+        public IActionResult Edit(EditPartViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var partToUpdate = new Part()
+            {
+                Id = viewModel.Id,
+                Price = viewModel.Price,
+                Quantity = viewModel.Quantity
+            };
+
+            this.partService.Edit(partToUpdate);
+
+            return RedirectToAction(nameof(All));
+        }
+
         [Route("all")]
         public IActionResult All()
             => View(this.partService.All());

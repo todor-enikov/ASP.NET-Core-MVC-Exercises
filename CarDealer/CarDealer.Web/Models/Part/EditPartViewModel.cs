@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CarDealer.Services.Models
+namespace CarDealer.Web.Models.Part
 {
-    public class PartModel
+    public class EditPartViewModel
     {
         public int Id { get; set; }
 
