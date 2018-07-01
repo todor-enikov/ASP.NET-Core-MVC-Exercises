@@ -14,6 +14,8 @@ namespace CarDealer.Services.Contracts
 
         void Edit(Part part);
 
+        void Delete(int id);
+
         PartModel ById(int id);
     }
 }

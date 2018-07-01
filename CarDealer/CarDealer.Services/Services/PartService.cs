@@ -35,6 +35,14 @@ namespace CarDealer.Services.Services
             this.dbContext.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            var partToRemove = this.dbContext.Parts.Find(id);
+
+            this.dbContext.Remove(partToRemove);
+            this.dbContext.SaveChanges();
+        }
+
         public IEnumerable<PartModel> All()
             => this.dbContext.Parts
                              .Select(p => new PartModel
@@ -44,6 +52,7 @@ namespace CarDealer.Services.Services
                                  Price = p.Price,
                                  Quantity = p.Quantity
                              })
+                             .OrderBy(p => p.Name)
                              .ToList();
 
         public PartModel ById(int id)
@@ -57,6 +66,5 @@ namespace CarDealer.Services.Services
 
                               })
                               .FirstOrDefault();
-
     }
 }

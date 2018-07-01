@@ -1,0 +1,11 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h2>Are you sure that you want to delete part with id: @(Model)</h2>
+
+<a href="/parts/delete/@(Model)" class="btn btn-primary">Confirm</a>
+<a href="/parts/all" class="btn btn-default">Cancel</a>
+

@@ -95,6 +95,25 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All));
         }
 
+        [Route("confirm-delete/{id}")]
+        public IActionResult ConfirmDelete(int id)
+        {
+            return View(id);
+        }
+
+        [Route("delete/{id}")]
+        public IActionResult DeletePart(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(id);
+            }
+
+            this.partService.Delete(id);
+
+            return RedirectToAction(nameof(All));
+        }
+
         [Route("all")]
         public IActionResult All()
             => View(this.partService.All());

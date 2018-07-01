@@ -94,10 +94,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("{id}")]
         public IActionResult ById(int id)
-        {
-            var customerById = this.customerService.CustomerById(id);
+            => View(this.customerService.CustomerById(id));
 
-            return View(customerById);
-        }
     }
 }
