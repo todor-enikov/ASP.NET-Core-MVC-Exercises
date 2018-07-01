@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarDealer.Web.Models.Part
 {
-    public class PartViewModel
+    public class AddPartViewModel
     {
         [MaxLength(100, ErrorMessage = "The name should be less than 100 symbols!")]
         [MinLength(5, ErrorMessage = "The name should be more than 5 symbols!")]

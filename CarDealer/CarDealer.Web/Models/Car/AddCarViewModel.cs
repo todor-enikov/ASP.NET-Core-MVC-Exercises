@@ -19,7 +19,7 @@ namespace CarDealer.Web.Models.Car
         [Required(ErrorMessage = "The model is required!")]
         public string Model { get; set; }
 
-        //[Range(0, ErrorMessage = "The range of the travelled distance could not be less than 0!")]
+        [Range(0, long.MaxValue, ErrorMessage = "The range of the travelled distance could not be less than 0!")]
         [Required(ErrorMessage = "The travelled distance is required!")]
         [Display(Name = "Travelled Distance")]
         public long TravelledDistance { get; set; }

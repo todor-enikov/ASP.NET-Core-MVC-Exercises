@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarDealer.Web.Models.Customer
 {
-    public class CustomerViewModel
+    public class AddCustomerViewModel
     {
         public int Id { get; set; }
 

@@ -29,7 +29,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("add")]
         [HttpPost]
-        public IActionResult Add(PartViewModel viewModel)
+        public IActionResult Add(AddPartViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {

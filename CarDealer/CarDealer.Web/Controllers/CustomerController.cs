@@ -24,7 +24,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("add")]
         [HttpPost]
-        public IActionResult Add(CustomerViewModel model)
+        public IActionResult Add(AddCustomerViewModel model)
         {
 
             if (!ModelState.IsValid)
@@ -49,7 +49,7 @@ namespace CarDealer.Web.Controllers
         {
             var customerById = this.customerService.EditCustomerById(id);
 
-            CustomerViewModel customerViewModel = new CustomerViewModel()
+            AddCustomerViewModel customerViewModel = new AddCustomerViewModel()
             {
                 Name = customerById.Name,
                 Birthday = customerById.Birthday,
@@ -61,7 +61,7 @@ namespace CarDealer.Web.Controllers
 
         [Route("edit/{id}")]
         [HttpPost]
-        public IActionResult Edit(CustomerViewModel viewModel)
+        public IActionResult Edit(AddCustomerViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
