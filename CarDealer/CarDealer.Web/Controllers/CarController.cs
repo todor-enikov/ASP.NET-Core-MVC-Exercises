@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarDealer.Data.Models;
 using CarDealer.Services.Contracts;
 using CarDealer.Web.Models.Car;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
@@ -21,10 +22,12 @@ namespace CarDealer.Web.Controllers
             this.carService = carService;
         }
 
+        [Authorize]
         [Route("add")]
         public IActionResult Add()
             => View();
 
+        [Authorize]
         [Route("add")]
         [HttpPost]
         public IActionResult Add(AddCarViewModel viewModel)
