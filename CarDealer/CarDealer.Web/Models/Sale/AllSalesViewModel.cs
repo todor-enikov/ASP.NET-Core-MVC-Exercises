@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarDealer.Web.Models.Part
+namespace CarDealer.Web.Models.Sale
 {
-    public class AllPartViewModel
+    public class AllSalesViewModel
     {
-        public IEnumerable<PartModel> Parts { get; set; }
+        public IEnumerable<SaleModel> Sales { get; set; }
 
         public int CurrentPage { get; set; }
 

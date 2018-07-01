@@ -70,6 +70,6 @@ namespace CarDealer.Services.Services
                               })
                               .FirstOrDefault();
 
-        public int Total() => this.dbContext.Parts.Count();
+        public int TotalParts() => this.dbContext.Parts.Count();
     }
 }

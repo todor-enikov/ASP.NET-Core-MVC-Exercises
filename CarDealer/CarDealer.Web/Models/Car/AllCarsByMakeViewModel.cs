@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarDealer.Web.Models.Car
 {
-    public class AllCarsViewModel
+    public class AllCarsByMakeViewModel
     {
         public IEnumerable<CarModel> AllCars { get; set; }
 

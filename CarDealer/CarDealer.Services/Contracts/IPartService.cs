@@ -18,6 +18,6 @@ namespace CarDealer.Services.Contracts
 
         PartModel ById(int id);
 
-        int Total();
+        int TotalParts();
     }
 }

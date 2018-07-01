@@ -1,7 +1,57 @@
-﻿@{
+﻿@model AllSalesViewModel
+
+@{
     ViewData["Title"] = "All sales";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-@Html.Partial("_SaleTablePartial")
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="/sales/all?page=@Model.PreviousPage">Previous</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/sales/all?page=@i">@i</a></li>
+
+        }
+        <li class="page-item"><a class="page-link" href="/sales/all?page=@Model.NextPage">Next</a></li>
+    </ul>
+</nav>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Car Id
+            </th>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Discount
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model.Sales)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@sale.Id.ToString(), "ById", "Sale", new { id = @sale.Id }, null)
+                </td>
+                <td>
+                    @sale.CarId
+                </td>
+                <td>
+                    @sale.CustomerId
+                </td>
+                <td>
+                    @sale.Discount
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

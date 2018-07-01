@@ -124,7 +124,7 @@ namespace CarDealer.Web.Controllers
             {
                 Parts = allParts,
                 CurrentPage = page,
-                TotalPages = (int)Math.Ceiling(this.partService.Total() / (double)PageSize)
+                TotalPages = (int)Math.Ceiling(this.partService.TotalParts() / (double)PageSize)
             };
 
             return View(allPartViewModel);

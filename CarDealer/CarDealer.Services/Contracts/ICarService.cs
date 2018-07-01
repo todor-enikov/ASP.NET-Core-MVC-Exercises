@@ -6,10 +6,12 @@ namespace CarDealer.Services.Contracts
 {
     public interface ICarService
     {
-        IEnumerable<CarModel> AllCars(string make);
+        IEnumerable<CarModel> AllCarsByMake(string make);
 
-        IEnumerable<CarsWithPartsModel> AllCarsWithParts();
+        IEnumerable<CarsWithPartsModel> AllCarsWithParts(int page, int pageSize);
 
         void Add(Car car);
+
+        int TotalCars();
     }
 }

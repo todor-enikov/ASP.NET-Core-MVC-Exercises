@@ -7,12 +7,14 @@ namespace CarDealer.Services.Contracts
 {
     public interface ISaleService
     {
-        IEnumerable<SaleModel> All();
+        IEnumerable<SaleModel> All(int page, int pageSize);
 
         SaleWithCarAndCustomerModel ById(int id);
 
         IEnumerable<SaleModel> Discounted();
 
         IEnumerable<SaleModel> DiscountedWithGivenPercent(double percent);
+
+        int TotalSales();
     }
 }

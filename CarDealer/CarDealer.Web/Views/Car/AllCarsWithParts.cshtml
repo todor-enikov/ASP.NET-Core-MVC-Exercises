@@ -1,9 +1,22 @@
-﻿@model List<CarsWithPartsModel>
+﻿@model AllCarsWithPartsViewModel
+
 @{
     ViewData["Title"] = "AllCarsWithParts";
 }
 
 <h2>All Cars With Parts</h2>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="/cars/parts?page=@Model.PreviousPage">Previous</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/cars/parts?page=@i">@i</a></li>
+
+        }
+        <li class="page-item"><a class="page-link" href="/cars/parts?page=@Model.NextPage">Next</a></li>
+    </ul>
+</nav>
 
 <table class="table table-bordered table-responsive table-hover">
     <thead>
@@ -23,17 +36,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var carWithPart in Model)
+        @foreach (var carWithPart in @Model.Cars)
         {
             <tr>
                 <td>
-                    @carWithPart.Make
+                    <a href="@carWithPart.Make">@carWithPart.Make</a>
                 </td>
                 <td>
                     @carWithPart.Model
                 </td>
                 <td>
-                   @(carWithPart.TravelledDistance /1000)
+                    @(carWithPart.TravelledDistance / 1000)
                 </td>
                 <td>
                     <ul>

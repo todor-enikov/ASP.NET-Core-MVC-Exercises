@@ -17,8 +17,11 @@ namespace CarDealer.Services.Services
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<SaleModel> All()
+        public IEnumerable<SaleModel> All(int page = 1, int pageSize = 10)
             => this.dbContext.Sales.AsQueryable()
+                                   .OrderBy(s => s.Id)
+                                   .Skip((page - 1) * pageSize)
+                                   .Take(pageSize)
                                    .Select(s => new SaleModel
                                    {
                                        Id = s.Id,
@@ -68,5 +71,7 @@ namespace CarDealer.Services.Services
                                        Discount = s.Discount
                                    })
                                    .ToList();
+
+        public int TotalSales() => this.dbContext.Sales.Count();
     }
 }

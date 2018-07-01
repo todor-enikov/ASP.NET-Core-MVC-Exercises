@@ -22,7 +22,7 @@ namespace CarDealer.Services.Services
             this.dbContext.SaveChanges();
         }
 
-        public IEnumerable<CarModel> AllCars(string make)
+        public IEnumerable<CarModel> AllCarsByMake(string make)
         {
             var allCars = this.dbContext.Cars.AsQueryable().Where(x => x.Make.ToLower().Equals(make.ToLower()));
             var allCarsSorted = allCars.OrderBy(x => x.Model).ThenByDescending(x => x.TravelledDistance);
@@ -32,24 +32,29 @@ namespace CarDealer.Services.Services
                 Make = c.Make,
                 Model = c.Model,
                 TravelledDistance = c.TravelledDistance
-            }).ToList();
+            })
+            .ToList();
         }
 
-        public IEnumerable<CarsWithPartsModel> AllCarsWithParts()
-            =>  this.dbContext.Cars
-                              .Select(c => new CarsWithPartsModel
-                              {
-                                  Make = c.Make,
-                                  Model = c.Model,
-                                  TravelledDistance = c.TravelledDistance,
-                                  Parts = c.Parts.Select(p =>
-                                    new PartModel
-                                    {
-                                        Name = p.Part.Name,
-                                        Price = p.Part.Price
-                                    })
-                              })
-                              .ToList();
+        public IEnumerable<CarsWithPartsModel> AllCarsWithParts(int page = 1, int pageSize = 10)
+            => this.dbContext.Cars
+                             .OrderByDescending(c => c.Id)
+                             .Skip((page - 1) * pageSize)
+                             .Take(pageSize)
+                             .Select(c => new CarsWithPartsModel
+                             {
+                                 Make = c.Make,
+                                 Model = c.Model,
+                                 TravelledDistance = c.TravelledDistance,
+                                 Parts = c.Parts.Select(p =>
+                                   new PartModel
+                                   {
+                                       Name = p.Part.Name,
+                                       Price = p.Part.Price
+                                   })
+                             })
+                             .ToList();
 
+        public int TotalCars() => this.dbContext.Cars.Count();
     }
 }
