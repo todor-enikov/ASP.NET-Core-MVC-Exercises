@@ -12,6 +12,8 @@ namespace CarDealer.Web.Controllers
     [Route("parts")]
     public class PartController : Controller
     {
+        private const int PageSize = 25;
+
         private readonly IPartService partService;
 
         public PartController(IPartService partService)
@@ -97,9 +99,8 @@ namespace CarDealer.Web.Controllers
 
         [Route("confirm-delete/{id}")]
         public IActionResult ConfirmDelete(int id)
-        {
-            return View(id);
-        }
+            => View(id);
+
 
         [Route("delete/{id}")]
         public IActionResult DeletePart(int id)
@@ -115,8 +116,19 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("all")]
-        public IActionResult All()
-            => View(this.partService.All());
+        public IActionResult All(int page = 1)
+        {
+            var allParts = this.partService.All(page, PageSize);
+
+            var allPartViewModel = new AllPartViewModel()
+            {
+                Parts = allParts,
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling(this.partService.Total() / (double)PageSize)
+            };
+
+            return View(allPartViewModel);
+        }
 
     }
 }

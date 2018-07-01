@@ -8,7 +8,7 @@ namespace CarDealer.Services.Contracts
 {
     public interface IPartService
     {
-        IEnumerable<PartModel> All();
+        IEnumerable<PartModel> All(int page, int pageSize);
 
         void Add(Part part);
 
@@ -17,5 +17,7 @@ namespace CarDealer.Services.Contracts
         void Delete(int id);
 
         PartModel ById(int id);
+
+        int Total();
     }
 }

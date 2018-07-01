@@ -43,8 +43,11 @@ namespace CarDealer.Services.Services
             this.dbContext.SaveChanges();
         }
 
-        public IEnumerable<PartModel> All()
+        public IEnumerable<PartModel> All(int page = 1, int pageSize = 10)
             => this.dbContext.Parts
+                             .OrderByDescending(p => p.Id)
+                             .Skip((page - 1) * pageSize)
+                             .Take(pageSize)
                              .Select(p => new PartModel
                              {
                                  Id = p.Id,
@@ -66,5 +69,7 @@ namespace CarDealer.Services.Services
 
                               })
                               .FirstOrDefault();
+
+        public int Total() => this.dbContext.Parts.Count();
     }
 }

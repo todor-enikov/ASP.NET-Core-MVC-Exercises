@@ -1,10 +1,22 @@
-﻿@model IEnumerable<PartModel>
+﻿@model AllPartViewModel
 
 @{
     ViewData["Title"] = "All parts";
 }
 
 <h2>@ViewData["Title"]</h2>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="/parts/all?page=@Model.PreviousPage">Previous</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/parts/all?page=@i">@i</a></li>
+
+        }
+        <li class="page-item"><a class="page-link" href="/parts/all?page=@Model.NextPage">Next</a></li>
+    </ul>
+</nav>
 
 <table class="table table-bordered table-responsive table-hover">
     <thead>
@@ -24,7 +36,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Parts)
         {
             <tr>
                 <td>

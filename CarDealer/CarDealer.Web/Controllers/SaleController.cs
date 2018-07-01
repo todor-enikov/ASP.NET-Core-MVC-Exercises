@@ -17,6 +17,7 @@ namespace CarDealer.Web.Controllers
             this.saleService = saleService;
         }
 
+        [Route("all")]
         public IActionResult All(int id)
         {
             return View(this.saleService.All());
